@@ -2,7 +2,7 @@
     {
         "id": "db2c39b65a359b39",
         "type": "tab",
-        "label": "Flujo",
+        "label": "Flujo 01",
         "disabled": false,
         "info": "",
         "env": []
@@ -28,8 +28,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 100,
-        "y": 180,
+        "x": 120,
+        "y": 40,
         "wires": [
             [
                 "b09df0ebad45d151"
@@ -48,8 +48,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 310,
-        "y": 180,
+        "x": 330,
+        "y": 40,
         "wires": []
     }
 ]

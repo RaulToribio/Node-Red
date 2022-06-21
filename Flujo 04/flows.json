@@ -1,0 +1,203 @@
+[
+    {
+        "id": "82f9b3cab9486caf",
+        "type": "tab",
+        "label": "Flujo 04",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "76fe611db4dca754",
+        "type": "mqtt in",
+        "z": "82f9b3cab9486caf",
+        "name": "Server",
+        "topic": "codigoIoT/G8/mosquitto/msg",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "c322764fab61828b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 70,
+        "y": 40,
+        "wires": [
+            [
+                "cff6d952e4a361af"
+            ]
+        ]
+    },
+    {
+        "id": "cff6d952e4a361af",
+        "type": "json",
+        "z": "82f9b3cab9486caf",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 250,
+        "y": 40,
+        "wires": [
+            [
+                "134571a18def2559"
+            ]
+        ]
+    },
+    {
+        "id": "134571a18def2559",
+        "type": "function",
+        "z": "82f9b3cab9486caf",
+        "name": "Función",
+        "func": "msg.topic = msg.payload.id;\nmsg.payload = msg.payload.temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 40,
+        "wires": [
+            [
+                "378c6aad96619e1c"
+            ]
+        ]
+    },
+    {
+        "id": "378c6aad96619e1c",
+        "type": "ui_chart",
+        "z": "82f9b3cab9486caf",
+        "name": "",
+        "group": "75f9bb2ad6fe21ef",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 650,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35214c5e3be7714c",
+        "type": "inject",
+        "z": "82f9b3cab9486caf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "codigoIoT/G8/mosquitto/msg",
+        "payload": "{\"id\":\"RaulToribio\",\"temp\":17}",
+        "payloadType": "json",
+        "x": 90,
+        "y": 140,
+        "wires": [
+            [
+                "d31ef98fe9516c4e"
+            ]
+        ]
+    },
+    {
+        "id": "d31ef98fe9516c4e",
+        "type": "mqtt out",
+        "z": "82f9b3cab9486caf",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c322764fab61828b",
+        "x": 270,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c322764fab61828b",
+        "type": "mqtt-broker",
+        "name": "Broker",
+        "broker": "18.156.8.172",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "75f9bb2ad6fe21ef",
+        "type": "ui_group",
+        "name": "Graficador",
+        "tab": "19d632cddcacfbab",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "19d632cddcacfbab",
+        "type": "ui_tab",
+        "name": "Grupo 01 - Flujo 04",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]

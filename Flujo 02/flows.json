@@ -1,0 +1,113 @@
+[
+    {
+        "id": "aec5a98f4db390b3",
+        "type": "tab",
+        "label": "Flujo 02",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b11ad3cff189bcde",
+        "type": "inject",
+        "z": "aec5a98f4db390b3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "b5d37afbfc4497a6"
+            ]
+        ]
+    },
+    {
+        "id": "903183081304e708",
+        "type": "debug",
+        "z": "aec5a98f4db390b3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b5d37afbfc4497a6",
+        "type": "function",
+        "z": "aec5a98f4db390b3",
+        "name": "",
+        "func": "// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "903183081304e708",
+                "c86f782326bb8e68"
+            ]
+        ]
+    },
+    {
+        "id": "c86f782326bb8e68",
+        "type": "ui_text",
+        "z": "aec5a98f4db390b3",
+        "group": "028a1958f9267eab",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Time Stamp",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 530,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "028a1958f9267eab",
+        "type": "ui_group",
+        "name": "Tiempo",
+        "tab": "dd3b2afb218ea2c9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "dd3b2afb218ea2c9",
+        "type": "ui_tab",
+        "name": "Grupo 01 - Flujo 02",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
